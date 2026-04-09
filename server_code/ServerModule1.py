@@ -204,19 +204,22 @@ def scheduled_refresh():
 
 @anvil.server.callable
 def debug_leaderboard():
-  leaderboard = get_raw_leaderboard()
-  # Show first 10 names from the scraped leaderboard
-  names = leaderboard[["name", "canonical_name", "current_score_raw", "current_score"]].head(10).to_dict(orient="records")
+  try:
+    leaderboard = get_raw_leaderboard()
+    print(f"Leaderboard has {len(leaderboard)} players")
+    for _, row in leaderboard.head(5).iterrows():
+      print(f"  Name: '{row['name']}' -> canonical: '{row['canonical_name']}' score_raw: '{row['current_score_raw']}' score: {row['current_score']}")
 
-  # Try matching a few of our picks
-  test_picks = ["Scottie Scheffler", "Rory McIlroy", "Jon Rahm"]
-  matches = {}
-  for pick in test_picks:
-    key = canonical_name(pick)
-    match = leaderboard[leaderboard["canonical_name"] == key]
-    matches[pick] = {"key": key, "found": not match.empty}
+    test_picks = ["Scottie Scheffler", "Rory McIlroy", "Jon Rahm"]
+    for pick in test_picks:
+      key = canonical_name(pick)
+      match = leaderboard[leaderboard["canonical_name"] == key]
+      print(f"  Pick '{pick}' -> key '{key}' -> found: {not match.empty}")
 
-  return {"leaderboard_sample": names, "match_tests": matches}
+    return "Check app console for output"
+  except Exception as e:
+    print(f"ERROR: {e}")
+    return f"Error: {e}"
 
 
 def format_score(x):
