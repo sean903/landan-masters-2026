@@ -202,31 +202,34 @@ def scheduled_refresh():
   refresh_person_leaderboard()
 
 
+def format_score(x):
+  if x is None:
+    return ""
+  if x == 999 or x == 999.0:
+    return "N/A"
+  if x == 0:
+    return "E"
+  return f"{x:+g}"
+
+
 @anvil.server.callable
 def get_person_leaderboard():
   rows = app_tables.person_leaderboard.search()
 
   data = []
   for row in rows:
+    avg = row["avg_score"]
     data.append({
       "person": row["person"],
-      "avg_score": row["avg_score"],
+      "avg_score": f"{avg:+.2f}" if avg < 999 else "N/A",
       "player_1": row["player_1"],
-      "matched_player_1": row["matched_player_1"],
-      "score_1": row["score_1"],
-      "found_1": row["found_1"],
+      "score_1": format_score(row["score_1"]),
       "player_2": row["player_2"],
-      "matched_player_2": row["matched_player_2"],
-      "score_2": row["score_2"],
-      "found_2": row["found_2"],
+      "score_2": format_score(row["score_2"]),
       "player_3": row["player_3"],
-      "matched_player_3": row["matched_player_3"],
-      "score_3": row["score_3"],
-      "found_3": row["found_3"],
+      "score_3": format_score(row["score_3"]),
       "player_4": row["player_4"],
-      "matched_player_4": row["matched_player_4"],
-      "score_4": row["score_4"],
-      "found_4": row["found_4"],
+      "score_4": format_score(row["score_4"]),
     })
 
   return sorted(data, key=lambda x: x["avg_score"])
