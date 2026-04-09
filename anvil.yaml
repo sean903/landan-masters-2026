@@ -1,4 +1,98 @@
 allow_embedding: false
+db_schema:
+  person_leaderboard:
+    client: none
+    columns:
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: person
+      type: string
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: avg_score
+      type: number
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: player_1
+      type: string
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: player_2
+      type: string
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: player_3
+      type: string
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: player_4
+      type: string
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: matched_player_1
+      type: string
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: matched_player_2
+      type: string
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: matched_player_3
+      type: string
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: matched_player_4
+      type: string
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: score_1
+      type: number
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: score_2
+      type: number
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: score_3
+      type: number
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: score_4
+      type: number
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: found_1
+      type: bool
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: found_2
+      type: bool
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: found_3
+      type: bool
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: found_4
+      type: bool
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: thru_1
+      type: string
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: thru_2
+      type: string
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: thru_3
+      type: string
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: thru_4
+      type: string
+    server: full
+    title: person_leaderboard
 dependencies: []
 metadata: {logo_img: 'asset:masters_logo.jpg', title: Landan Masters 2026}
 name: Landan Masters 2026
