@@ -53,14 +53,6 @@ db_schema:
       type: string
     - admin_ui: {width: 200}
       client_hidden: false
-      name: matched_player_5
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: false
-      name: matched_player_6
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: false
       name: score_1
       type: number
     - admin_ui: {width: 200}
@@ -74,14 +66,6 @@ db_schema:
     - admin_ui: {width: 200}
       client_hidden: false
       name: score_4
-      type: number
-    - admin_ui: {width: 200}
-      client_hidden: false
-      name: score_5
-      type: number
-    - admin_ui: {width: 200}
-      client_hidden: false
-      name: score_6
       type: number
     - admin_ui: {width: 200}
       client_hidden: false
@@ -101,14 +85,6 @@ db_schema:
       type: bool
     - admin_ui: {width: 200}
       client_hidden: false
-      name: found_5
-      type: bool
-    - admin_ui: {width: 200}
-      client_hidden: false
-      name: found_6
-      type: bool
-    - admin_ui: {width: 200}
-      client_hidden: false
       name: thru_1
       type: string
     - admin_ui: {width: 200}
@@ -122,14 +98,6 @@ db_schema:
     - admin_ui: {width: 200}
       client_hidden: false
       name: thru_4
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: false
-      name: thru_5
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: false
-      name: thru_6
       type: string
     server: full
     title: person_leaderboard
