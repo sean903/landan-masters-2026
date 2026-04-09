@@ -61,7 +61,7 @@ def safe_int(value):
 def parse_player_score(row):
   raw = str(row.get("current_score_raw", "")).strip().upper()
 
-  if raw == "E":
+  if raw in {"E", ""}:
     return 0.0
 
   try:
@@ -81,7 +81,8 @@ def parse_player_score(row):
   if raw in {"WD", "DQ"}:
     return 999.0
 
-  return 999.0
+  # Unknown status (not started, etc.) — treat as even par
+  return 0.0
 
 
 def get_raw_leaderboard():
@@ -166,7 +167,7 @@ def score_one_person(leaderboard, person, picks):
 
     if match.empty:
       actual_name = player
-      score = 999.0
+      score = 0.0
       found = False
     else:
       row = match.iloc[0]
