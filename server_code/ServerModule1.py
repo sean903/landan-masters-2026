@@ -202,6 +202,23 @@ def scheduled_refresh():
   refresh_person_leaderboard()
 
 
+@anvil.server.callable
+def debug_leaderboard():
+  leaderboard = get_raw_leaderboard()
+  # Show first 10 names from the scraped leaderboard
+  names = leaderboard[["name", "canonical_name", "current_score_raw", "current_score"]].head(10).to_dict(orient="records")
+
+  # Try matching a few of our picks
+  test_picks = ["Scottie Scheffler", "Rory McIlroy", "Jon Rahm"]
+  matches = {}
+  for pick in test_picks:
+    key = canonical_name(pick)
+    match = leaderboard[leaderboard["canonical_name"] == key]
+    matches[pick] = {"key": key, "found": not match.empty}
+
+  return {"leaderboard_sample": names, "match_tests": matches}
+
+
 def format_score(x):
   if x is None:
     return ""
