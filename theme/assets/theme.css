@@ -1048,24 +1048,17 @@ div.plot-container.plotly svg.main-svg {
 }
 
 /* Mobile-friendly leaderboard: horizontal scroll */
-.anvil-data-grid {
+.content {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
-.anvil-data-grid table {
-  min-width: 1100px;
-  table-layout: fixed;
+.anvil-panel-col {
+  overflow: visible;
+}
+.anvil-data-grid {
+  min-width: 1200px;
 }
 .anvil-data-grid th,
 .anvil-data-grid td {
   white-space: nowrap;
-  padding: 6px 8px;
-  font-size: 14px;
-}
-@media (max-width: 600px) {
-  .anvil-data-grid th,
-  .anvil-data-grid td {
-    font-size: 12px;
-    padding: 4px 6px;
-  }
 }
