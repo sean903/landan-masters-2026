@@ -8,20 +8,20 @@ components:
     name: data_test_leaderboard
     properties:
       columns:
-      - {data_key: person, id: JKSDUP, title: Person}
-      - {data_key: avg_score, id: OJLQEN, title: Avg (Best 3)}
-      - {data_key: player_1, id: GBBQST, title: Player 1}
-      - {data_key: score_1, id: CCTWMX, title: Score 1}
-      - {data_key: thru_1, id: THRU01, title: Thru}
-      - {data_key: player_2, id: PKGTVD, title: P2}
-      - {data_key: score_2, id: OUWSGT, title: S2}
-      - {data_key: thru_2, id: THRU02, title: Thru}
-      - {data_key: player_3, id: PNMZJD, title: P3}
-      - {data_key: score_3, id: AJHMTC, title: S3}
-      - {data_key: thru_3, id: THRU03, title: Thru}
-      - {data_key: player_4, id: EAEIER, title: P4}
-      - {data_key: score_4, id: BLZTLG, title: S4}
-      - {data_key: thru_4, id: THRU04, title: Thru}
+      - {data_key: person, id: JKSDUP, title: Person, width: 90}
+      - {data_key: avg_score, id: OJLQEN, title: Avg, width: 60}
+      - {data_key: player_1, id: GBBQST, title: Player 1, width: 130}
+      - {data_key: score_1, id: CCTWMX, title: Score, width: 50}
+      - {data_key: thru_1, id: THRU01, title: Thru, width: 45}
+      - {data_key: player_2, id: PKGTVD, title: Player 2, width: 130}
+      - {data_key: score_2, id: OUWSGT, title: Score, width: 50}
+      - {data_key: thru_2, id: THRU02, title: Thru, width: 45}
+      - {data_key: player_3, id: PNMZJD, title: Player 3, width: 130}
+      - {data_key: score_3, id: AJHMTC, title: Score, width: 50}
+      - {data_key: thru_3, id: THRU03, title: Thru, width: 45}
+      - {data_key: player_4, id: EAEIER, title: Player 4, width: 130}
+      - {data_key: score_4, id: BLZTLG, title: Score, width: 50}
+      - {data_key: thru_4, id: THRU04, title: Thru, width: 45}
     type: DataGrid
   layout_properties: {slot: default}
   name: content_panel

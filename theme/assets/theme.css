@@ -1046,3 +1046,26 @@ div.plot-container.plotly svg.main-svg {
 .anvil-spinner {
     --anvil-spinner-bg: %color:Surface Variant%;
 }
+
+/* Mobile-friendly leaderboard: horizontal scroll */
+.anvil-data-grid {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.anvil-data-grid table {
+  min-width: 1100px;
+  table-layout: fixed;
+}
+.anvil-data-grid th,
+.anvil-data-grid td {
+  white-space: nowrap;
+  padding: 6px 8px;
+  font-size: 14px;
+}
+@media (max-width: 600px) {
+  .anvil-data-grid th,
+  .anvil-data-grid td {
+    font-size: 12px;
+    padding: 4px 6px;
+  }
+}
