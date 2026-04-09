@@ -29,14 +29,6 @@ db_schema:
       type: string
     - admin_ui: {width: 200}
       client_hidden: false
-      name: player_5
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: false
-      name: player_6
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: false
       name: matched_player_1
       type: string
     - admin_ui: {width: 200}
