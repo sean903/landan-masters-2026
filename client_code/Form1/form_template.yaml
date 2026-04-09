@@ -1,0 +1,33 @@
+components:
+- components:
+  - components:
+    - name: repeating_panel_1
+      properties: {item_template: Form1.RowTemplate1}
+      type: RepeatingPanel
+    layout_properties: {grid_position: 'PCECPB,NWIMPH'}
+    name: data_test_leaderboard
+    properties:
+      columns:
+      - {data_key: person, id: JKSDUP, title: Person}
+      - {data_key: avg_score, id: OJLQEN, title: Avg (Best 3)}
+      - {data_key: player_1, id: GBBQST, title: Player 1}
+      - {data_key: score_1, id: CCTWMX, title: Score 1}
+      - {data_key: player_2, id: PKGTVD, title: P2}
+      - {data_key: score_2, id: OUWSGT, title: S2}
+      - {data_key: player_3, id: PNMZJD, title: P3}
+      - {data_key: score_3, id: AJHMTC, title: S3}
+      - {data_key: player_4, id: EAEIER, title: P4}
+      - {data_key: score_4, id: BLZTLG, title: S4}
+    type: DataGrid
+  layout_properties: {slot: default}
+  name: content_panel
+  properties: {col_widths: '{}'}
+  type: ColumnPanel
+- layout_properties: {slot: nav-right}
+  name: navbar_links
+  properties: {}
+  type: FlowPanel
+container:
+  properties: {html: '@theme:standard-page.html'}
+  type: HtmlTemplate
+is_package: true

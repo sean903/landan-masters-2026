@@ -1,0 +1,16 @@
+allow_embedding: false
+dependencies: []
+metadata: {logo_img: 'asset:masters_logo.jpg', title: Landan Masters 2026}
+name: Landan Masters 2026
+package_name: Landan_Masters_2026
+renamed: true
+runtime_options:
+  client_version: '3'
+  legacy_features: {bootstrap3: true, class_names: true}
+  server_spec: {base: python310-minimal}
+  version: 3
+services:
+- client_config: {}
+  server_config: {}
+  source: /runtime/services/tables.yml
+startup_form: Form1
