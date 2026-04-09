@@ -125,12 +125,44 @@ def get_raw_leaderboard():
   return leaderboard
 
 
+def match_player(leaderboard, player):
+  """Match a pick name against the leaderboard.
+  Tries full canonical name first, then falls back to surname matching.
+  """
+  key = canonical_name(player)
+  match = leaderboard[leaderboard["canonical_name"] == key]
+  if not match.empty:
+    return match
+
+  # Leaderboard uses abbreviated names like "S. Lowry"
+  # Match by surname, then disambiguate by first initial if needed
+  pick_parts = key.split()
+  if len(pick_parts) < 2:
+    return match  # empty
+
+  surname = pick_parts[-1]
+  first_initial = pick_parts[0][0]
+
+  surname_matches = leaderboard[leaderboard["canonical_name"].str.endswith(f" {surname}")]
+
+  if len(surname_matches) == 1:
+    return surname_matches
+
+  if len(surname_matches) > 1:
+    # Disambiguate by first initial
+    initial_matches = surname_matches[surname_matches["canonical_name"].str.startswith(first_initial)]
+    if not initial_matches.empty:
+      return initial_matches.head(1)
+    return surname_matches.head(1)
+
+  return match  # empty
+
+
 def score_one_person(leaderboard, person, picks):
   player_rows = []
 
   for i, player in enumerate(picks, start=1):
-    key = canonical_name(player)
-    match = leaderboard[leaderboard["canonical_name"] == key]
+    match = match_player(leaderboard, player)
 
     if match.empty:
       actual_name = player
@@ -212,9 +244,9 @@ def debug_leaderboard():
 
     test_picks = ["Scottie Scheffler", "Rory McIlroy", "Jon Rahm"]
     for pick in test_picks:
-      key = canonical_name(pick)
-      match = leaderboard[leaderboard["canonical_name"] == key]
-      print(f"  Pick '{pick}' -> key '{key}' -> found: {not match.empty}")
+      match = match_player(leaderboard, pick)
+      matched_name = match.iloc[0]["name"] if not match.empty else "NOT FOUND"
+      print(f"  Pick '{pick}' -> matched: '{matched_name}'")
 
     return "Check app console for output"
   except Exception as e:
