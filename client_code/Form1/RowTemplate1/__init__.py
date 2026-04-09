@@ -16,16 +16,7 @@ class RowTemplate1(RowTemplate1Template):
     self.init_components(**properties)
 
     self.person.text = self.item["person"]
-
-    cut_count = self.item.get("cut_count", 0)
-    avg = self.item["avg_score"]
-    if cut_count < 3 and avg >= 999:
-      self.avg_score.text = "ELIM"
-    else:
-      label = f'{avg:+.2f}'
-      if cut_count < 3:
-        label += " *"
-      self.avg_score.text = label
+    self.avg_score.text = f'{self.item["avg_score"]:+.2f}'
 
     self.player_1.text = self.item["player_1"]
     self.score_1.text = format_score(self.item["score_1"])
