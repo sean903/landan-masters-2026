@@ -265,23 +265,25 @@ def format_score(x):
 
 
 @anvil.server.callable
-def get_person_leaderboard():
-  rows = app_tables.person_leaderboard.search()
+def get_live_leaderboard():
+  """Fetch live data directly - no table needed."""
+  leaderboard = get_raw_leaderboard()
+  rows = []
 
-  data = []
-  for row in rows:
-    avg = row["avg_score"]
-    data.append({
-      "person": row["person"],
+  for person, picks in PICKS.items():
+    result = score_one_person(leaderboard, person, picks)
+    avg = result["avg_score"]
+    rows.append({
+      "person": result["person"],
       "avg_score": f"{avg:+.2f}" if avg < 999 else "N/A",
-      "player_1": row["player_1"],
-      "score_1": format_score(row["score_1"]),
-      "player_2": row["player_2"],
-      "score_2": format_score(row["score_2"]),
-      "player_3": row["player_3"],
-      "score_3": format_score(row["score_3"]),
-      "player_4": row["player_4"],
-      "score_4": format_score(row["score_4"]),
+      "player_1": result["player_1"],
+      "score_1": format_score(result["score_1"]),
+      "player_2": result["player_2"],
+      "score_2": format_score(result["score_2"]),
+      "player_3": result["player_3"],
+      "score_3": format_score(result["score_3"]),
+      "player_4": result["player_4"],
+      "score_4": format_score(result["score_4"]),
     })
 
-  return sorted(data, key=lambda x: x["avg_score"])
+  return sorted(rows, key=lambda x: x["avg_score"])
