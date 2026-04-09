@@ -168,11 +168,13 @@ def score_one_person(leaderboard, person, picks):
     if match.empty:
       actual_name = player
       score = 0.0
+      thru = ""
       found = False
     else:
       row = match.iloc[0]
       actual_name = row["name"]
       score = row["current_score"]
+      thru = str(row.get("hole", "")).strip()
       found = True
 
     player_rows.append({
@@ -180,6 +182,7 @@ def score_one_person(leaderboard, person, picks):
       "pick_name": player,
       "matched_name": actual_name,
       "score": score,
+      "thru": thru,
       "found": found,
     })
 
@@ -198,6 +201,7 @@ def score_one_person(leaderboard, person, picks):
     out[f"player_{idx}"] = p["pick_name"]
     out[f"matched_player_{idx}"] = p["matched_name"]
     out[f"score_{idx}"] = p["score"]
+    out[f"thru_{idx}"] = p["thru"]
     out[f"found_{idx}"] = p["found"]
 
   return out
@@ -277,14 +281,19 @@ def get_live_leaderboard():
     rows.append({
       "person": result["person"],
       "avg_score": f"{avg:+.2f}" if avg < 999 else "N/A",
+      "avg_score_num": avg,
       "player_1": result["player_1"],
       "score_1": format_score(result["score_1"]),
+      "thru_1": result.get("thru_1", ""),
       "player_2": result["player_2"],
       "score_2": format_score(result["score_2"]),
+      "thru_2": result.get("thru_2", ""),
       "player_3": result["player_3"],
       "score_3": format_score(result["score_3"]),
+      "thru_3": result.get("thru_3", ""),
       "player_4": result["player_4"],
       "score_4": format_score(result["score_4"]),
+      "thru_4": result.get("thru_4", ""),
     })
 
-  return sorted(rows, key=lambda x: x["avg_score"])
+  return sorted(rows, key=lambda x: x["avg_score_num"])
